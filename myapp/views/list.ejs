@@ -1,0 +1,179 @@
+<%- include ./common/headers.ejs  %>
+
+    <body style="background: pink;">
+        <header id="container2" style="background:#795b59 url(/images/top.jpg) center 0 scroll no-repeat;">
+
+            <div class="quotes" style="font-size: 18px;color: white;">
+
+                <a href="/loginout" style="color: white;font-size: 30px;left: 1080px;position: relative;top: -40px;font-weight:bold;">退出登陆</a>
+                <h3 style="font-size: 22px;position: relative;left: 280px;">斯蒂芬·库里简介及图集描述</h3>
+                2009年NBA选秀，斯蒂芬·库里在首轮第7顺位被金州勇士队选中。新秀赛季 新秀赛季(15张) 2009年10月29日，在勇士与火箭的比赛中，斯蒂芬·库里首发出场，36分钟12投7中拿到14分2篮板7次助攻和4次抢断，完成NBA首秀。 2010年1月28日，NBA公布全明星新秀挑战赛18人大名单，斯蒂芬·库里入选一年级队。 2010年2月2日，NBA官方公布了1月份月最佳新秀名单，斯蒂芬·库里当选西部月最佳新秀。在1月份的比赛当中，库里场均出场39.5分钟排在所有新秀的首位，场均19.1分排在第二位，场均5.1次助攻排在第二位，场均4.4个篮板排在第七位，场均2次抢断排在首位。
+                2010年2月11日，在勇士与快船的比赛中，斯蒂芬·库里全场得到36分10篮板和13次助攻，刷新职业生涯单场得分和助攻纪录，收获生涯首次三双，这是2009届新秀的第一个三双，并成为NBA历史上第六个在新秀年就拿下30+10+10的球员。 2010年4月8日，在勇士与森林狼的比赛中，斯蒂芬·库里得到27分、14次助攻、8个篮板球和7次抢断的准四双数据，同时成就了主教练老尼尔森执教历史上的第1333场胜利。2011全明星技巧赛 2011全明星技巧赛(17张) 2010年5月1日，NBA官方公布了2009-10赛季新秀最佳阵容名单，斯蒂芬·库里全票入选第一阵容。
+                2010-11赛季 2011年2月2日，NBA官方公布2011年全明星新秀挑战赛大名单，斯蒂芬·库里入选二年级队。 2011年2月20日，在全明星周末技巧挑战赛中，斯蒂芬·库里用时28.2秒，战胜拉塞尔·威斯布鲁克等对手，最终夺冠。 2011-12赛季 2011-12赛季，斯蒂芬·库里持续受到伤病困扰，仅出战了26场比赛，场均只有14.7分、5.3次助攻和3.4个篮板。在常规赛还未结束之前即宣布赛季报销。
+            </div>
+
+            <div id="nav" class="menu-container">
+                <ul id="menu-0" class="menu" style="list-style: none;">
+                    <li id="menu-item-1"><a href="#">主页</a></li>
+                    <li id="menu-item-2"><a href="#">日志</a></li>
+                    <li id="menu-item-3"><a href="#">留言板</a></li>
+                    <li id="menu-item-4"><a href="#">说说</a></li>
+                    <li id="menu-item-5"><a href="#">个人档</a></li>
+                </ul>
+
+            </div>
+        </header>
+        <!--header-->
+        <div id="main" class="main-narrow">
+            <div class="panel-body">
+                <form role="form" class="form-inline" method="POST" action="http://localhost:4000/product/search" enctype="application/x-www-form-urlencoded">
+
+
+                    <div class="form-group">
+                        <!-- <label for="name">名称</label> -->
+                        <input type="text" class="form-control" id="name" name="searchtext" placeholder="请输入你要查找的信息">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">开始搜索</button>
+                    </div>
+                    <div class="form-group">
+                        <a href="http://localhost:4000/add" class="btn btn-default" style="font-size: 14px;">添加图片记录博客</a>
+                    </div>
+
+                </form>
+            </div>
+            <div id="content" class="post-index" style="height: 2256px;">
+                <% for(var i=0;i<arr.length;i++){  %>
+                    <article id="post-348" class="type-post">
+                        <div class="article-wrap">
+                            <td class="text-center">
+                                <a href="/product/update/<%=arr[i].id%>" style="position: relative;left:196px;">修改</a>
+                                <a href="/product/delete/<%=arr[i].id%>?img=<%=arr[i].pic%>" style="position: relative;left:196px;">删除</a>
+                            </td>
+                            <header class="entry-header">
+                                <h1>
+                                    <a href="#" class="post-title" style="color: black;">
+                                        <%=arr[i].price%>
+                                    </a>
+                                    <% if (arr[i].updateAt) { %>
+                                        <span class="meta-time" style="color:black;"> <%=moment(arr[i].updateAt).format('YYYY-MM-DD')%></span>
+
+
+                                        <% } else { %>
+                                            <span class="meta-time" style="color:black;"> <%=moment(arr[i].createAt).format('YYYY-MM-DD')%></span>
+
+                                            <% } %>
+
+
+
+
+
+                                </h1>
+                            </header>
+                            <div class="entry-content">
+                                <p>
+                                    <a href="#" class="post-feature"><img src="<%=arr[i].pic%>"></a>
+                                </p>
+                                <p style="color: black;">
+                                    <%=arr[i].fee%>
+                                </p>
+                            </div>
+
+                        </div>
+                    </article>
+                    <% }%>
+                        <!--post-index-->
+            </div>
+            <!--content-->
+            <!-- <nav id="wide-page-navi" class="page-navi"><span>1</span> <a class="page-numbers" href="#">2</a>
+                <a class="next page-numbers" href="#"></a>
+            </nav> -->
+            <nav id="narrow-page-navi" class="page-navi">
+                <div class="nav-next"><a href="#">下一页</a></div>
+            </nav>
+        </div>
+        <p></p>
+        <!--main-->
+        <footer id="main-footer">
+            <div id="footer-widget">
+                <aside id="footer-comments" class="foo-widget">
+                    <h3>最新评论</h3>
+                    <ul>
+                        <li>
+                            <span><img alt="个人博客评论头像" src="/images/1.jpeg" class="avatar"></span>
+                            <a href="#" title="雪中漫步">不知不觉中冬天已经来。。。</a>
+                        </li>
+                        <li>
+                            <span><img alt="个人博客评论头像" src="/images/2.png" class="avatar"></span>
+                            <a href="#" title="雪中漫步">宁静的早晨</a>
+                        </li>
+                        <li>
+                            <span><img alt="个人博客评论头像" src="/images/3.png" class="avatar"></span>
+                            <a href="#" title="雪中漫步">雪!飞舞着。</a>
+                        </li>
+                        <li>
+                            <span><img alt="个人博客评论头像" src="/images/4.jpg" class="avatar"></span>
+                            <a href="#" title="雪中漫步">这是寒冬季节,北风一吹,寒气扑鼻。</a>
+                        </li>
+                    </ul>
+                </aside>
+                <aside id="footer-tags" class="foo-widget">
+                    <h3>热门标签</h3>
+                    <ul class="wp-tag-cloud">
+                        <li><a href="#" class="tag-link">雪中漫步</a></li>
+                        <li><a href="#" class="tag-link">个人博客模板</a></li>
+                        <li><a href="#" class="tag-link">认真的雪</a></li>
+                        <li><a href="#" class="tag-link">独自一人</a></li>
+                        <li><a href="#" class="tag-link">雨伞</a></li>
+                        <li><a href="#" class="tag-link">时光轴</a></li>
+                        <li><a href="#" class="tag-link">冬季</a></li>
+                        <li><a href="#" class="tag-link">生活</a></li>
+                        <li><a href="#" class="tag-link">孤单的我</a></li>
+                        <li><a href="#" class="tag-link">技能</a></li>
+                        <li><a href="#" class="tag-link">html5</a></li>
+                        <li><a href="#" class="tag-link">前端学习</a></li>
+                        <li><a href="#" class="tag-link">好友</a></li>
+                        <li><a href="#" class="tag-link">爱听歌</a></li>
+                        <li><a href="#" class="tag-link">div+css</a></li>
+                    </ul>
+                    <ul></ul>
+                </aside>
+                <aside id="footer-readwall" class="foo-widget readwall" style="float: left;">
+                    <h3>留言墙</h3>
+                    <ul>
+                        <li>
+                            <a href="#"><img alt="个人头像" src="/images/s0.jpg" class="avatar"></a><span class="author" style="display:none"></span>
+                        </li>
+                        <li>
+                            <a href="#"><img alt="个人头像" src="/images/03(1).jpg" class="avatar"></a><span class="author" style="display:none"></span>
+                        </li>
+                        <li>
+                            <a href="#"><img alt="个人头像" src="/images/864.jpg" class="avatar"></a><span class="author" style="display:none"></span>
+                        </li>
+
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="clear"></div>
+        </footer>
+        <!--footer-->
+        <script type="text/javascript" src="/js/jquery-1.10.2.min.js.下载"></script>
+        <script type="text/javascript" src="/js/responsive.js.下载"></script>
+        <!-- <script src="/js/snow.js.下载"></script> -->
+        <!-- <script src="/js/Snow.js.下载"></script> -->
+        <style type="text/css">
+            .snow-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 100001;
+            }
+        </style>
+        <!-- <div class="snow-container"><canvas width="1519" height="672"></canvas></div> -->
+
+        <%- include ./common/footer.ejs  %>
